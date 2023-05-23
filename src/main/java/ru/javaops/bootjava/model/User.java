@@ -1,15 +1,16 @@
 package ru.javaops.bootjava.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+import org.springframework.util.StringUtils;
+
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString(callSuper = true, exclude = {"password"})
-public class User extends BaseEntity {
+public class User extends AbstractEntity {
 //public class User extends AbstractPersistable<Integer> {
     @Column(name = "email", nullable = false, unique = true)
     @Email
@@ -40,8 +41,19 @@ public class User extends BaseEntity {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "user_roles_unique")})
-    @Column(name = "role")
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private Role role;
+
+    private boolean enabled;
+
+    public void setEmail(String email) {
+        this.email = StringUtils.hasText(email) ? email.toLowerCase() : null;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

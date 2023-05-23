@@ -60,3 +60,18 @@ server.servlet:
 #    visibility.getter: none
 #    visibility.setter: none
 #    visibility.is-getter: none
+
+# Springdoc
+springdoc.swagger-ui.docExpansion: none
+
+# Server configuration
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
+      enabled: true # Enable http encoding support
+      force: true
+
+# Application-specific settings
+vote.time.constraint: "11:00"  # the time after which the user can not change his vote

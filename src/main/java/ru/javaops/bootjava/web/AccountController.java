@@ -34,7 +34,7 @@ import ru.javaops.bootjava.repository.UserRepository;
 import ru.javaops.bootjava.service.UserService;
 import ru.javaops.bootjava.util.ValidationUtil;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.EnumSet;
 

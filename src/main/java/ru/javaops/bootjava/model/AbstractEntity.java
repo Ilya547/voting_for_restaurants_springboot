@@ -2,14 +2,14 @@ package ru.javaops.bootjava.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.util.ProxyUtils;
 import org.springframework.util.Assert;
 
-//import javax.persistence.*;
+//import jakarta.persistence.*;
 
 @MappedSuperclass
 ////  https://stackoverflow.com/a/6084701/548473
@@ -19,7 +19,7 @@ import org.springframework.util.Assert;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public abstract class BaseEntity implements Persistable<Integer> {
+public abstract class AbstractEntity implements Persistable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +46,7 @@ public abstract class BaseEntity implements Persistable<Integer> {
         if (o == null || !getClass().equals(ProxyUtils.getUserClass(o))) {
             return false;
         }
-        BaseEntity that = (BaseEntity) o;
+        AbstractEntity that = (AbstractEntity) o;
         return id != null && id.equals(that.id);
     }
 
