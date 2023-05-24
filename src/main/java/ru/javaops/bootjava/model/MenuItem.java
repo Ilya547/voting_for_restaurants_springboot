@@ -6,7 +6,6 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +26,7 @@ public class MenuItem extends AbstractEntity implements Comparable<MenuItem> {
 
     @NotNull
     @Column(name = "price", nullable = false)
-    private BigDecimal price;
+    private int price;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)

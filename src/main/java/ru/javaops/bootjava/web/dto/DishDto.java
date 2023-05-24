@@ -6,13 +6,13 @@ import lombok.ToString;
 import lombok.Value;
 
 /**
- * A DTO for the {@link ru.jsft.voteforlunch.model.Dish} entity
+ * A DTO for the {@link ru.javaops.bootjava.model.Dish} entity
  */
 @Value
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class DishDto extends AbstractDto {
-    @NotBlank(message = "The dish must have a name")
+    @NotBlank
 
     String name;
 

@@ -1,15 +1,11 @@
 package ru.javaops.bootjava.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
-
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.util.ProxyUtils;
-import org.springframework.util.Assert;
 
-//import jakarta.persistence.*;
 
 @MappedSuperclass
 ////  https://stackoverflow.com/a/6084701/548473
@@ -19,17 +15,11 @@ import org.springframework.util.Assert;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public abstract class AbstractEntity implements Persistable<Integer> {
+public abstract class AbstractEntity implements Persistable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
-
-    // doesn't work for hibernate lazy proxy
-    public int id() {
-        Assert.notNull(id, "Entity must have id");
-        return id;
-    }
+    protected Long id;
 
     @JsonIgnore
     @Override
@@ -52,6 +42,6 @@ public abstract class AbstractEntity implements Persistable<Integer> {
 
     @Override
     public int hashCode() {
-        return id == null ? 0 : id;
+        return 1;
     }
 }

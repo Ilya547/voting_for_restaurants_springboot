@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * A DTO for the {@link ru.jsft.voteforlunch.model.Vote} entity
+ * A DTO for the {@link ru.javaops.bootjava.model.Vote} entity
  */
 @Value
 @EqualsAndHashCode(callSuper = true)

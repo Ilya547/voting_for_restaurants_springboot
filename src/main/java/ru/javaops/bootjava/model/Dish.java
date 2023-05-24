@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 @Getter
 @Setter
 @Entity
+@ToString(callSuper = true)
 public class Dish extends AbstractEntity {
     @NotBlank
     @Column(name = "name", nullable = false, unique = true)

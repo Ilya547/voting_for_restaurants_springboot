@@ -5,12 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 /**
- * A DTO for the {@link ru.jsft.voteforlunch.model.Restaurant} entity
+ * A DTO for the {@link ru.javaops.bootjava.model.Restaurant} entity
  */
 @Value
 @EqualsAndHashCode(callSuper = true)
 public class RestaurantDto extends AbstractDto {
-    @NotBlank(message = "The restaurant must have a name")
+    @NotBlank
 
     String name;
 

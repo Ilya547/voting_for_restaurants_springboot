@@ -1,27 +1,20 @@
 package ru.javaops.bootjava.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.*;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 import org.springframework.util.StringUtils;
 
-import java.util.Set;
-
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = @Index(name = "email_unique_idx", columnList = "email", unique = true))
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true, exclude = {"password"})
 public class User extends AbstractEntity {
-//public class User extends AbstractPersistable<Integer> {
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotEmpty
@@ -49,6 +42,7 @@ public class User extends AbstractEntity {
         this.email = StringUtils.hasText(email) ? email.toLowerCase() : null;
     }
 
+    @Enumerated(EnumType.STRING)
     public Role getRole() {
         return role;
     }

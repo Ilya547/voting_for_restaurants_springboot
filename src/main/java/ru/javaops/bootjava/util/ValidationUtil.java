@@ -14,11 +14,11 @@ public class ValidationUtil {
     }
 
     //  Conservative when you reply, but accept liberally (http://stackoverflow.com/a/32728226/548473)
-    public static void assureIdConsistent(AbstractEntity entity, int id) {
-        if (entity.isNew()) {
-            entity.setId(id);
-        } else if (entity.id() != id) {
-            throw new IllegalRequestDataException(entity.getClass().getSimpleName() + " must has id=" + id);
-        }
-    }
+//    public static void assureIdConsistent(AbstractEntity entity, int id) {
+//        if (entity.isNew()) {
+//            entity.setId((long) id);
+//        } else if (entity.id() != id) {
+//            throw new IllegalRequestDataException(entity.getClass().getSimpleName() + " must has id=" + id);
+//        }
+//    }
 }

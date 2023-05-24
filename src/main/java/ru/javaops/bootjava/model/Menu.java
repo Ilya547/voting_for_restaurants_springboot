@@ -1,27 +1,29 @@
 package ru.javaops.bootjava.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "menu")
+@Table(
+        indexes = {
+                @Index(name = "menu_restaurant_id_idx", columnList = "RESTAURANT_ID"),
+        },
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uc_menu_date_of_menu", columnNames = {"DATE_OF_MENU", "RESTAURANT_ID"})
+        })
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 public class Menu extends AbstractEntity {
 
     @NotNull

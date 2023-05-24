@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface MenuRepository extends JpaRepository<Menu, Integer> {
+public interface MenuRepository extends JpaRepository<Menu, Long> {
 
     @EntityGraph(attributePaths = "restaurant")
     @Query("select m from Menu m where m.dateOfMenu = :date order by m.dateOfMenu desc, m.restaurant.name asc")

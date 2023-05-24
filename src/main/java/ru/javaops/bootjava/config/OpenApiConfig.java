@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
-import org.springdoc.core.GroupedOpenApi;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "REST API documentation",
                 version = "1.0",
-                description = "Приложение для голосования за рестораны",
+                description = "Vote for lunch - votes counter",
                 contact = @Contact(name = "Ilya Pavlov", email = "ilya547@bk.ru")
         ),
         security = @SecurityRequirement(name = "basicAuth")
@@ -33,7 +33,6 @@ public class OpenApiConfig {
         return GroupedOpenApi.builder()
                 .group("REST API")
                 .pathsToMatch("/api/**")
-                .pathsToExclude("/api/profile/**")
                 .build();
     }
 }

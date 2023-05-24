@@ -5,7 +5,7 @@ spring:
     open-in-view: false
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       #  http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#configurations
       hibernate:
@@ -46,23 +46,23 @@ logging:
   level:
     root: WARN
     ru.javaops.bootjava: DEBUG
-#    org.springframework.security.web.FilterChainProxy: DEBUG
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.security: DEBUG
 
-server.servlet:
-  encoding:
-    charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
-    enabled: true # Enable http encoding support
-    force: true
-
-# Jackson Serialization Issue Resolver
-#  jackson:
-#    visibility.field: any
-#    visibility.getter: none
-#    visibility.setter: none
-#    visibility.is-getter: none
+  # Jackson Serialization Issue Resolver
+  jackson:
+    visibility.field: any
+    visibility.getter: none
+    visibility.setter: none
+    visibility.is-getter: none
 
 # Springdoc
 springdoc.swagger-ui.docExpansion: none
+#springdoc:
+#  packages-to-scan: ru/javaops/bootjava/web/controller
+springdoc:
+  writer-with-default-pretty-printer: true
+  use-fqn: true
 
 # Server configuration
 server:
@@ -75,3 +75,12 @@ server:
 
 # Application-specific settings
 vote.time.constraint: "11:00"  # the time after which the user can not change his vote
+
+# Spring Boot color console
+output.ansi.enabled: always
+
+  # Cache
+# https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#common-application-properties-cache
+cache:
+  cache-names: menu,menus,voteDistribution
+  caffeine.spec: maximumSize=5000,expireAfterAccess=5m

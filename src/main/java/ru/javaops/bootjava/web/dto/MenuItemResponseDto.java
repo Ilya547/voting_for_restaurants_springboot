@@ -1,14 +1,13 @@
 package ru.javaops.bootjava.web.dto;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-import ru.jsft.voteforlunch.model.MenuItem;
+
 
 /**
- * A DTO for the {@link MenuItem} entity
+ * A DTO for the {@link ru.javaops.bootjava.model.MenuItem} entity
  */
 @Value
 @EqualsAndHashCode(callSuper = true)
@@ -16,10 +15,10 @@ import ru.jsft.voteforlunch.model.MenuItem;
 public class MenuItemResponseDto extends AbstractDto {
     @NotNull DishDto dish;
 
-    @Positive(message = "Price must be positive")
+    @NotNull
     int price;
 
-    public MenuItemResponseDto(Long id, DishDto dish, int price) {
+    public MenuItemResponseDto(Long id, DishDto dish, @NotNull int price) {
         super(id);
         this.dish = dish;
         this.price = price;

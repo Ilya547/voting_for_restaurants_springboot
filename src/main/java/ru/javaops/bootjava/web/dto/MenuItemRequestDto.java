@@ -4,10 +4,10 @@ import jakarta.validation.constraints.Positive;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-import ru.jsft.voteforlunch.model.MenuItem;
+
 
 /**
- * A DTO for the {@link MenuItem} entity
+ * A DTO for the {@link ru.javaops.bootjava.model.MenuItem} entity
  */
 @Value
 @EqualsAndHashCode(callSuper = true)

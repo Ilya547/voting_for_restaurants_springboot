@@ -6,7 +6,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-import ru.jsft.voteforlunch.model.Role;
+import ru.javaops.bootjava.model.Role;
+
+/**
+ * A DTO for the {@link ru.javaops.bootjava.model.User} entity
+ */
 
 @Value
 @EqualsAndHashCode(callSuper = true)
